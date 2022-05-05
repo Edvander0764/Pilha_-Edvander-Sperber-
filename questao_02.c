@@ -1,135 +1,59 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct Pilha {
-
-	int topo; /* posiÃ§Ã£o elemento topo */
-	int capa;
-	float *pElem;
-
-};
-
-void criarpilha( struct Pilha *p, int c ){
-
-   p->topo = -1;
-   p->capa = c;
-   p->pElem = (float*) malloc (c * sizeof(float));
-
-}
-int estavazia ( struct Pilha *p ){
-
-   if( p-> topo == -1 )
-
-      return 1;   // true
-
-   else
-
-      return 0;   // false
-
-}
-
-int estacheia ( struct Pilha *p ){
-
-	if (p->topo == p->capa - 1)
-
-		return 1;
-
-	else
-
-		return 0;
-
-}
-
-void empilhar ( struct Pilha *p, float v){
-
-	p->topo++;
-	p->pElem [p->topo] = v;
-
-}
-
-float desempilhar ( struct Pilha *p ){
-
-   float aux = p->pElem [p->topo];
-   p->topo--;
-   return aux;
-
-}
-
-float retornatopo ( struct Pilha *p ){
-
-   return p->pElem [p->topo];
-
-}
+#include "pilha.h" 
 
 int main(){
 
-	struct Pilha minhapilha;
-	int capacidade, op;
-	float valor;
+	struct spilha x, y, z; 
+	int i;
 
-	printf( "\nCapacidade da pilha? " );
-	scanf( "%d", &capacidade );
+    init(&x);
+    init(&y);
+    init(&z);
 
-	criarpilha (&minhapilha, capacidade);
+    push(&x,'A'); 
+    push(&x,'B'); 
+    push(&x,'C');
+    push(&x,'D');
 
-	while( 1 ){ /* loop infinito */
+	printf("=================");
+	printf("\n >>> PILHA X <<< \n\n");
 
-		printf("\n1- empilhar (push)\n");
-		printf("2- desempilhar (POP)\n");
-		printf("3- Mostrar o topo \n");
-		printf("4- sair\n");
-		printf("\nopcao? ");
-		scanf("%d", &op);
+    for (i = x.topo-1 ; i>=0 ; i--)
+	{
+        printf(" %c\n", x.vetor[i]); 
+		sleep(1); 
+    }
+	printf("\n x      y      z\n" ); 
+	printf("=================");
 
-		switch (op){
+    push(&y,pop(&x));
+    push(&y,pop(&x)); 
+    push(&y,pop(&x));
+    push(&z,pop(&x));
+    push(&x,pop(&y));
+    push(&z,pop(&y));
+    push(&z,pop(&x));
+    push(&z,pop(&y));
 
-			case 1: //push
+	sleep(1);
 
-				if( estacheia( &minhapilha ) == 1 )
+ 	printf("\n\n>>> ... reordenando ... <<<\n\n");
 
-					printf("\nPILHA CHEIA! \n");
+	sleep(3); //3 segundos de delay. 
+	//Meu sistema reconhece a escrita como segundos, não milésimos. 
+	//caso seu sistema reconheça milésimos, é só colocar "3000" no lugar do "3".
 
-				else {
+	printf("=================");
+    printf("\n >>> PILHA Z <<< \n\n");
 
-					printf("\nVALOR? ");
-					scanf("%f", &valor);
-					empilhar (&minhapilha, valor);
-
-				}
-				break;
-
-			case 2: //pop
-				if ( estavazia(&minhapilha) == 1 )
-
-					printf( "\nPILHA VAZIA! \n" );
-
-				else{
-
-					valor = desempilhar (&minhapilha);
-					printf ( "\n%.1f DESEMPILHADO!\n", valor );
-
-				}
-				break;
-
-			case 3: // mostrar o topo
-				if ( estavazia (&minhapilha) == 1 )
-
-					printf( "\nPILHA VAZIA!\n" );
-
-				else {
-
-					valor = retornatopo (&minhapilha);
-					printf ( "\nTOPO: %.1f\n", valor );
-
-				}
-				break;
-
-			case 4: 
-				exit(0);
-
-			default: printf( "\nOPCAO INVALIDA! \n" );
-		}
-	}
-	
+    for (i = z.topo-1 ; i>=0 ; i--)
+	{
+        printf(" %15c\n",z.vetor[i]);  
+		sleep(1);
+    }
+	printf("\n x      y      z\n" ); 
+	printf("=================\n");
+    return 0;
 }
-
+//achei muito bonitinho o daley
