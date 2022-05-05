@@ -40,9 +40,9 @@ int main(){
 
  	printf("\n\n>>> ... reordenando ... <<<\n\n");
 
-	sleep(3); //3 segundos de delay. 
-	//Meu sistema reconhece a escrita como segundos, não milésimos. 
-	//caso seu sistema reconheça milésimos, é só colocar "3000" no lugar do "3".
+	sleep(3); //3 segundos de delay
+	//Meu sistema reconhece a escrita como segundos, não milésimos
+	//caso seu sistema reconheça milésimos, é só colocar "3000" no lugar do "3"
 
 	printf("=================");
     printf("\n >>> PILHA Z <<< \n\n");
