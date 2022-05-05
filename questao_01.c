@@ -1,26 +1,64 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "pilha.h"
 
 int main()
 {
-    struct spilha p;
-    init(&p);
+    struct spilha pilha;
+    int i;
 
-    printf("\n Criando pilha \n\n");
+    init(&pilha);
 
-    push(&p,'A');
-    push(&p, top(&p));
-    push(&p, 'B');
-    pop(&p);
-    push(&p, 'C');
-    push(&p, pop(&p));
-    push(&p, 'D');
-    pop(&p);
-
+    printf("Executando operacao PUSH \n");
     
-    for(int i = p.topo - 1; i >= 0; i--){
-        printf("%c\n", p.vetor[i]);
+    push(&pilha,'A');
+    push(&pilha,'B');
+    push(&pilha,'C');
+    push(&pilha,'D');
+
+
+    printf("\n >>> PILHA INICIAL <<< \n");
+
+    for (i=pilha.topo-1; i>=0; i--)
+    {
+        printf("%c\n",pilha.vetor[i]); 
     }
+    //----------------------------------------------------
+    printf("\n... Executando PUSH (p, TOP (p)) ...\n");
+    push(&pilha, top(&pilha));
+
+    printf("\n >>> PILHA ATUAL <<< \n");
+    for (i=pilha.topo-1; i>=0; i--)
+    {
+        printf("%c\n",pilha.vetor[i]); 
+    }
+    //----------------------------------------------------
+    printf("\n... Executando POP (p) ...\n");
+    pop(&pilha);
+
+    printf("\n >>> PILHA ATUAL <<< \n");
+    for (i=pilha.topo-1; i>=0; i--)
+    {
+        printf("%c\n",pilha.vetor[i]); 
+    }
+    //----------------------------------------------------
+    printf("\n... Executando PUSH (p, POP (p)) ...\n");
+    push(&pilha, pop(&pilha));
+
+    for (i=pilha.topo-1; i>=0; i--)
+    {
+        printf("%c\n",pilha.vetor[i]); 
+    }
+    //----------------------------------------------------
+    printf("\n... Executando POP (p) ...\n", pop(&pilha));
+
+    for (i=pilha.topo-1; i>=0; i--)
+    {
+        printf("%c\n",pilha.vetor[i]); 
+    }
+
     return 0;
 }
+
+

@@ -37,7 +37,7 @@ if (isFull(p)) { /* capacidade esgotada */
    exit(1); /* aborta programa */
 }
 
-/* insere elemento na próxima posição livre */
+/* insere elemento na pr�xima posi��o livre */
 p->vetor[p->topo] = v;
 p->topo++;
 }
