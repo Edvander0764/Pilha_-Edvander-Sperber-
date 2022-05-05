@@ -9,51 +9,56 @@ int main()
     int i;
 
     init(&pilha);
-
-    printf("Executando operacao PUSH \n");
     
     push(&pilha,'A');
     push(&pilha,'B');
     push(&pilha,'C');
     push(&pilha,'D');
 
-
     printf("\n >>> PILHA INICIAL <<< \n");
 
-    for (i=pilha.topo-1; i>=0; i--)
+    for (i = pilha.topo - 1 ; i>=0 ; i--)
     {
         printf("%c\n",pilha.vetor[i]); 
     }
+
     //----------------------------------------------------
+
     printf("\n... Executando PUSH (p, TOP (p)) ...\n");
     push(&pilha, top(&pilha));
 
     printf("\n >>> PILHA ATUAL <<< \n");
-    for (i=pilha.topo-1; i>=0; i--)
+    for (i = pilha.topo - 1 ; i>=0 ; i--)
     {
         printf("%c\n",pilha.vetor[i]); 
     }
+
     //----------------------------------------------------
+
     printf("\n... Executando POP (p) ...\n");
     pop(&pilha);
 
     printf("\n >>> PILHA ATUAL <<< \n");
-    for (i=pilha.topo-1; i>=0; i--)
+    for (i = pilha.topo - 1 ; i>=0 ; i--)
     {
         printf("%c\n",pilha.vetor[i]); 
     }
+
     //----------------------------------------------------
-    printf("\n... Executando PUSH (p, POP (p)) ...\n");
+
+    printf("\n... Executando PUSH (p, POP (p)) ...\n"); //aqui tira, mas coloca de novo. Basicamente continua no estado anterior.
     push(&pilha, pop(&pilha));
 
-    for (i=pilha.topo-1; i>=0; i--)
+    for (i = pilha.topo - 1 ; i>=0 ; i--)
     {
         printf("%c\n",pilha.vetor[i]); 
     }
+
     //----------------------------------------------------
+
     printf("\n... Executando POP (p) ...\n", pop(&pilha));
 
-    for (i=pilha.topo-1; i>=0; i--)
+    for (i = pilha.topo - 1 ; i>=0 ; i--)
     {
         printf("%c\n",pilha.vetor[i]); 
     }
